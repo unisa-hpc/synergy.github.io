@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYnergy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0779e4 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #0779e4;
+        }
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        code {
+            display: block;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>SYnergy</h1>
+        </div>
+    </header>
+    <div class="container">
+        <section>
+            <h2>SYCL Library for Energy Measurement and Frequency Scaling</h2>
+            <p>SYnergy allows to get standard power-related features such as per-application and per-kernel energy measurements as well as frequency scaling capabilities, all with minimal configuration.</p>
+            <p><strong>Currently supported target architectures:</strong></p>
+            <ul>
+                <li>NVIDIA GPUs supported through the <a href="https://developer.nvidia.com/nvidia-management-library-nvml" target="_blank">NVML library</a>.</li>
+                <li>AMD GPUs supported through the <a href="https://github.com/RadeonOpenCompute/rocm_smi_lib" target="_blank">ROCm SMI library</a>.</li>
+                <li>Intel GPUs through the <a href="https://spec.oneapi.io/level-zero/latest/sysman/PROG.html" target="_blank">Sysman API</a>.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Build</h2>
+            <h3>Dependencies</h3>
+            <ul>
+                <li>cmake (3.17 or newer)</li>
+                <li>C++17 or newer compiler</li>
+                <li>A supported SYCL implementation: DPC++, OpenSYCL</li>
+                <li>A supported target architecture: CUDA with NVML, ROCm with ROCm SMI, Level Zero with Sysman</li>
+            </ul>
+            <p>To build SYnergy samples, type:</p>
+            <code>
+                cd SYnergy<br>
+                mkdir build && cd build/<br><br>
+
+                # CUDA<br>
+                cmake .. -DSYNERGY_BUILD_SAMPLES=ON -DSYNERGY_SYCL_IMPL=[OpenSYCL | DPC++] -DSYNERGY_CUDA_SUPPORT=ON<br>
+                # ROCm<br>
+                cmake .. -DSYNERGY_BUILD_SAMPLES=ON -DSYNERGY_SYCL_IMPL=[OpenSYCL | DPC++] -DSYNERGY_ROCM_SUPPORT=ON<br>
+                # Level Zero<br>
+                cmake .. -DSYNERGY_BUILD_SAMPLES=ON -DSYNERGY_SYCL_IMPL=[OpenSYCL | DPC++] -DSYNERGY_LZ_SUPPORT=ON
+            </code>
+        </section>
+        <section>
+            <h2>Usage</h2>
+            <p>To use SYnergy, just swap your current <code>sycl::queue</code> with <code>synergy::queue</code>. Under the <code>samples/</code> folder you can find an example of SYnergy usage.</p>
+        </section>
+    </div>
+</body>
+</html>
